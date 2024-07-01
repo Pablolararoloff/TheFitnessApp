@@ -1,22 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Text, Button } from 'react-native-paper';
+import CarouselComponent from '../components/CarouselComponent';
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Image source={require('../assets/images/workout.jpg')} style={styles.image} />
-      <Text style={styles.title}>Adapt your workout</Text>
-      <View style={styles.dotsContainer}>
-        <View style={styles.dot} />
-        <View style={styles.dot} />
-        <View style={styles.dot} />
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Text style={styles.accountText}>I have already an account</Text>
-      </TouchableOpacity>
+      <CarouselComponent />
+      <Button
+        mode="contained"
+        onPress={() => console.log('Continue pressed')}
+        style={styles.button}
+        labelStyle={styles.buttonText}
+      >
+        Continue
+      </Button>
+      <Button
+        onPress={() => console.log('Login pressed')}
+        style={styles.link}
+        labelStyle={styles.accountText}
+      >
+        I already have an account
+      </Button>
     </View>
   );
 };
@@ -24,52 +29,26 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 20,
-    backgroundColor: '#f8f8f8',
-  },
-  image: {
-    width: '100%',
-    height: 200,
-    resizeMode: 'contain',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginVertical: 20,
-  },
-  dotsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 20,
-  },
-  dot: {
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-    backgroundColor: '#000',
-    marginHorizontal: 5,
+    padding: 5,
+    backgroundColor: '#cc8948',
   },
   button: {
     width: '80%',
-    padding: 15,
-    backgroundColor: '#000',
-    borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
     marginVertical: 20,
   },
   buttonText: {
-    color: '#fff',
     fontSize: 18,
+    color: '#fff',
   },
   accountText: {
-    color: '#000',
     fontSize: 16,
+    color: '#000',
     textDecorationLine: 'underline',
+  },
+  link: {
+    marginVertical: 10,
   },
 });
 
